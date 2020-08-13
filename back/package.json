@@ -1,0 +1,23 @@
+{
+  "name": "blog-server",
+  "version": "1.0.0",
+  "description": "back-end for the blog",
+  "main": "/src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "start:prod": "npm start"
+  },
+  "keywords": [
+    "blog",
+    "api",
+    "nodejs"
+  ],
+  "author": "jp_blond",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^6.3.4",
+    "sqlite3": "^5.0.0"
+  }
+}

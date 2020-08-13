@@ -1,0 +1,16 @@
+[
+  {
+    "email": "jean-philippe@blond-technologies.com",
+    "nickName": "solid_guy",
+    "password": "5d41402abc4b2a76b9719d911017c592",
+    "avatarUrl": "https://www.nautiljon.com/images/perso/00/37/bepo_7173.jpg",
+    "role": "admin"
+  },
+  {
+    "email": "tim-cook@apple.com",
+    "nickName": "the director",
+    "password": "7d793037a0760186574b0282f2f435e7",
+    "avatarUrl": "https://cdn.1min30.com/wp-content/uploads/2019/05/Apple-logo-1.jpg",
+    "role": "user"
+  }
+]
