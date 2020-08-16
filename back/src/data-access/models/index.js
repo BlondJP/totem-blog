@@ -1,14 +1,18 @@
+// dependencies
 const { Sequelize, DataTypes } = require("sequelize");
 const DATABASE_CONFIG = "sqlite::memory:";
 const sequelize = new Sequelize(DATABASE_CONFIG);
 
+// factories
 const makeTag = require("./Tag");
-const Tag = makeTag({ sequelize, DataTypes });
-
 const makeArticle = require("./Article");
-const Article = makeArticle({ sequelize, DataTypes });
-
+const makeComment = require("./Comment");
 const makeUser = require("./User");
+
+// creating models
+const Tag = makeTag({ sequelize, DataTypes });
+const Article = makeArticle({ sequelize, DataTypes });
+const Comment = makeComment({ sequelize, DataTypes });
 const User = makeUser({ sequelize, DataTypes });
 
 // Associations
@@ -17,6 +21,9 @@ Tag.belongsToMany(Article, { through: "Article_Tags" });
 
 User.hasMany(Article);
 Article.belongsTo(User);
+
+Article.hasMany(Comment);
+Comment.belongsTo(Article);
 
 sequelize.sync({ force: true }).then(async () => {
   console.log("synchronizing models ...");
@@ -55,4 +62,4 @@ sequelize.sync({ force: true }).then(async () => {
   //   console.log(result);
 });
 
-module.exports = Object.freeze({ Article, User });
+module.exports = Object.freeze({ Article, User, Comment });

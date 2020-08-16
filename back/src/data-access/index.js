@@ -1,5 +1,5 @@
 // dependencies
-const { Article, User } = require("./orm");
+const { Article, User } = require("./models");
 
 // factories
 const makeUserDb = require("./user-db");
