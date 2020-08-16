@@ -2,8 +2,9 @@ const express = require("express");
 const server = express();
 const { PORT } = process.env;
 
-// middlewares
+// shared middlewares
 const bodyParser = require("body-parser");
+const { checkJwt, handleUserAuthorization } = require("./middlewares");
 server.use(
   bodyParser.urlencoded({
     extended: true,
@@ -13,10 +14,11 @@ server.use(bodyParser.json());
 
 // controllers
 const { authUser, createArticle, getAllArticles } = require("./controllers");
-
 server.post("/auth", authUser);
 
-// TODO here middleware to check token
+// check jwt & authorization
+server.use(checkJwt);
+server.use(handleUserAuthorization);
 
 const ARTICLES_RESOURCE = "/users/:userId/articles";
 server.post(ARTICLES_RESOURCE, createArticle);
