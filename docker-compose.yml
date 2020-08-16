@@ -1,14 +1,6 @@
 version: "3"
 
 services:
-  #   front-server:
-  #     container_name: front-server
-  #     restart: always
-  #     build: .
-  #     ports:
-  #       - "4201:4200"
-  #     depends_on:
-  #       - back-server
   backend-server:
     container_name: backend-server
     restart: always
@@ -21,18 +13,8 @@ services:
       - "./back/src/:/usr/src/app/src"
       - "./back/node_modules/:/usr/src/app/node_modules"
       - "./back/blog.key:/usr/src/app/blog.key"
+      - "./back/blog.key.pub:/usr/src/app/blog.key.pub"
     environment:
       - PORT=3001
       - PRIVATE_KEY_FILENAME=blog.key
       - PUBLIC_KEY_FILENAME=blog.key.pub
-    #   - DATABASE_CONFIG=sqlite::memory:
-#         - DYNAMODB_ENDPOINT="http://localhost:8042"
-#     depends_on:
-#         - database
-#   database:
-#     container_name: database
-#     image: amazon/dynamodb-local
-#     hostname: dynamodb-local
-#     container_name: dynamodb-local
-#     ports:
-#         - "8042:8000"%

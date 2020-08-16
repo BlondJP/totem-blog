@@ -1,6 +1,6 @@
 // here Article is the Model Class, userDb is the user data-access
 
-module.exports = (Article, userDb) => {
+module.exports = (Article, Comment, userDb) => {
   async function insert(userId, articleInfos) {
     const user = await userDb.findOne(userId);
     const article = await Article.create(articleInfos);
@@ -10,8 +10,15 @@ module.exports = (Article, userDb) => {
   }
 
   async function findAll(userId) {
-    const user = await userDb.findOneWithArticles(userId);
-    return user.Articles || [];
+    // const user = await userDb.findOneWithArticles(userId);
+
+    const articles = await Article.findAll({
+      where: { userId },
+      include: [Comment],
+    });
+
+    return articles;
+    // return user.Articles || [];
   }
 
   return Object.freeze({ insert, findAll });

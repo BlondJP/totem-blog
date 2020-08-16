@@ -1,5 +1,5 @@
 // dependencies
-const { articleDb, userDb } = require("../data-access");
+const { articleDb, userDb, commentDb } = require("../data-access");
 const jwt = require("jsonwebtoken");
 const { PRIVATE_KEY_FILENAME, PUBLIC_KEY_FILENAME } = process.env;
 const fs = require("fs");
@@ -11,6 +11,7 @@ const makeFindAllArticles = require("./find-all-articles");
 const makeAuthenticateUser = require("./authenticate-user");
 const makeProvidePrivateKey = require("./provide-private-key");
 const makeProvidePublicKey = require("./provide-public-key");
+const makeAddComment = require("./add-comment");
 
 // injections
 const addArticle = makeAddArticle(articleDb);
@@ -21,12 +22,13 @@ const providePrivateKey = makeProvidePrivateKey(
   PRIVATE_KEY_FILENAME
 );
 const providePublicKey = makeProvidePublicKey(fs, appRoot, PUBLIC_KEY_FILENAME);
-
 const authenticateUser = makeAuthenticateUser(userDb, jwt, providePrivateKey());
+const addComment = makeAddComment(commentDb);
 
 module.exports = Object.freeze({
   addArticle,
   findAllArticles,
   authenticateUser,
   providePublicKey,
+  addComment,
 });

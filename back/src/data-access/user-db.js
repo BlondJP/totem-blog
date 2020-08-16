@@ -1,6 +1,6 @@
 module.exports = (User, Article) => {
   async function findOne(userId) {
-    const user = User.findByPk(userId);
+    const user = await User.findByPk(userId);
 
     if (!user) {
       throw new Error(`user with ID ${userId} does not exist.`);
@@ -10,7 +10,7 @@ module.exports = (User, Article) => {
   }
 
   async function findOneWithArticles(userId) {
-    const user = User.findOne({
+    const user = await User.findOne({
       where: { id: userId },
       include: [Article],
     });
@@ -22,15 +22,14 @@ module.exports = (User, Article) => {
     return user;
   }
 
-  async function findOneByIdAndPassword(id, password) {
-    const user = User.findOne({
-      where: { id, password },
-      include: [Article],
+  async function findOneByEmailAndPassword(email, password) {
+    const user = await User.findOne({
+      where: { email, password },
     });
 
     if (!user) {
       throw new Error(
-        `user with ID ${id} and the provided password does not exist.`
+        `user with email ${email} and the provided password does not exist.`
       );
     }
 
@@ -40,6 +39,6 @@ module.exports = (User, Article) => {
   return Object.freeze({
     findOne,
     findOneWithArticles,
-    findOneByIdAndPassword,
+    findOneByEmailAndPassword,
   });
 };

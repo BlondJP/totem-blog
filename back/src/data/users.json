@@ -12,5 +12,12 @@
     "password": "7d793037a0760186574b0282f2f435e7",
     "avatarUrl": "https://cdn.1min30.com/wp-content/uploads/2019/05/Apple-logo-1.jpg",
     "role": "user"
+  },
+  {
+    "email": "mark-zuckerberg@facebook.com",
+    "nickName": "the robot",
+    "password": "9cdfb439c7876e703e307864c9167a15",
+    "avatarUrl": "https://png.pngtree.com/png-clipart/20190516/original/pngtree-facebook-icon-png-image_3566127.jpg",
+    "role": "user"
   }
 ]

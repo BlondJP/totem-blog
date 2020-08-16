@@ -1,6 +1,6 @@
 module.exports = (userDb, jwt, privateKey) =>
-  async function authenticateUser(userId, password) {
-    const user = await userDb.findOneByIdAndPassword(userId, password);
+  async function authenticateUser(email, password) {
+    const user = await userDb.findOneByEmailAndPassword(email, password);
 
     if (!user.id || !user.role) {
       throw new Error("Invalid user to create the token");
