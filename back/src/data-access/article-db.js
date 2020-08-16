@@ -9,5 +9,10 @@ module.exports = (Article, userDb) => {
     return article.dataValues;
   }
 
-  return Object.freeze({ insert });
+  async function findAll(userId) {
+    const user = await userDb.findOneWithArticles(userId);
+    return user.Articles || [];
+  }
+
+  return Object.freeze({ insert, findAll });
 };

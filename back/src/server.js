@@ -12,8 +12,10 @@ server.use(
 server.use(bodyParser.json());
 
 // controllers
-const { createArticle } = require("./controllers");
+const { createArticle, getAllArticles } = require("./controllers");
 
-server.post("/users/:userId/articles", createArticle);
+const ARTICLES_RESOURCE = "/users/:userId/articles";
+server.post(ARTICLES_RESOURCE, createArticle);
+server.get(ARTICLES_RESOURCE, getAllArticles);
 
 server.listen(PORT, () => console.log(`server is listenning on port ${PORT}`));
