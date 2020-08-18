@@ -28,7 +28,7 @@ curl --request POST \
 }'
 
 curl --request GET \
- --url http://localhost:3001/users/1/articles \
+ --url http://localhost:3001/users/me/articles \
  --header 'authorization: Bearer TOKEN'
 
 curl --request POST \
