@@ -11,9 +11,9 @@ services:
       - "3001:3001"
     volumes:
       - "./back/src/:/usr/src/app/src"
-      - "./back/node_modules/:/usr/src/app/node_modules"
-      - "./back/blog.key:/usr/src/app/blog.key"
-      - "./back/blog.key.pub:/usr/src/app/blog.key.pub"
+      # - "./back/node_modules/:/usr/src/app/node_modules"
+      # - "./back/blog.key:/usr/src/app/blog.key"
+      # - "./back/blog.key.pub:/usr/src/app/blog.key.pub"
     environment:
       - PORT=3001
       - PRIVATE_KEY_FILENAME=blog.key
